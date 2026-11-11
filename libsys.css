@@ -138,7 +138,7 @@ nav #Logout:hover{
 
 .cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(3, minmax(280px, 1fr));
     gap: 20px;
     background-color: rgb(214, 202, 217);
     padding: 15px;
@@ -197,7 +197,7 @@ nav #Logout:hover{
     color: #166534;
     border-radius: 22px;
     padding: 5px 10px;
-   
+    list-style-type: none;   
 }
 
 .cards .checkout li{
@@ -207,13 +207,41 @@ nav #Logout:hover{
     color: #991B1B;
     border-radius: 22px;
     padding: 5px 10px;
+    list-style-type: none;
    
 }
    
-
 footer {
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    gap: 20px;
+    background-color: #b1b0b4;
     padding: 15px;
-    color: #777;
+    color: #342c2c;
+    font-size: 13px;
+}
+.footer .one {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #b1b0b4;
+    padding: 15px;
+    color: #342c2c;
+    font-size: 13px;
+}
+.footer .one img{
+    border-radius: 50%;
+    width: 70px;
+    height: auto;
+}
+.footer .two {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    background-color: #b1b0b4;
+    padding: 15px;
+    color: #342c2c;
     font-size: 13px;
 }
