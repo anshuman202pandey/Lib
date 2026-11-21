@@ -1,16 +1,75 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>My Reservations</title>
-</head>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="View and manage your Campus Library reservations."
+    />
+    <title>Campus Library | My reservations</title>
+    <link rel="stylesheet" href="libsys.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="libsys.html" aria-label="Campus Library home">
+        <img src="image.png" alt="IIT Dholakpur logo" />
+        <span
+          ><strong>Campus Library</strong
+          ><small>Discover. Reserve. Learn.</small></span
+        >
+      </a>
+      <nav class="header-actions" aria-label="Reservation navigation">
+        <a class="button button-secondary" href="libsys.html"
+          >Back to catalogue</a
+        >
+        <button class="button button-ghost" id="logout-button" type="button">
+          Log out
+        </button>
+      </nav>
+    </header>
 
-<body>
+    <main>
+      <section class="page-intro" aria-labelledby="reservation-title">
+        <div>
+          <p class="eyebrow">Your account</p>
+          <h1 id="reservation-title">My reservations</h1>
+          <p>
+            Keep track of the copies you have set aside. Each reserved copy is
+            held for 24 hours, or until you cancel it.
+          </p>
+        </div>
+        <p
+          class="results-summary"
+          id="reservation-summary"
+          aria-live="polite"
+        ></p>
+      </section>
+      <section
+        class="reservation-grid"
+        id="reserved-books"
+        aria-live="polite"
+      ></section>
+    </main>
 
-    <h1>My Reserved Books</h1>
-
-    <div id="reserved-books"></div>
-
+    <footer class="footer">
+      <div class="footer-brand">
+        <img src="image.png" alt="IIT Dholakpur logo" />
+        <div>
+          <strong>Campus Library</strong>
+          <p>© 2026 IIT Dholakpur. All rights reserved.</p>
+        </div>
+      </div>
+      <p class="footer-quote">
+        “Without libraries what have we? We have no past and no future.”
+      </p>
+      <div>
+        <strong>Contact</strong>
+        <p>heshim@iitd.ac.in<br />696789XXXX</p>
+      </div>
+    </footer>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="library-data.js"></script>
     <script src="reservation.js"></script>
-
-</body>
+  </body>
 </html>

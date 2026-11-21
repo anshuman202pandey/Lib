@@ -1,251 +1,131 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Campus Library</title>
-    <link rel = "stylesheet" href = libsys.css>
-</head>
-<body>
-    <nav class="Navigation">
-        <h1> Campus Library </h1>
-        <form action = "Reservation.html">
-        <button id="reservation" type="submit">My Reservations</button>
-        </form>
-        <form action = "login-copy.html">
-        <button id="Logout" type="submit">Log out</button> 
-        </form>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Browse and reserve titles from the Campus Library catalogue."
+    />
+    <title>Campus Library | Catalogue</title>
+    <link rel="stylesheet" href="libsys.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="libsys.html" aria-label="Campus Library home">
+        <img src="image.png" alt="IIT Dholakpur logo" />
+        <span
+          ><strong>Campus Library</strong
+          ><small>Discover. Reserve. Learn.</small></span
+        >
+      </a>
+      <nav class="header-actions" aria-label="Account navigation">
+        <span class="student-chip" id="student-id" hidden></span>
+        <a class="button button-secondary" href="Reservation.html"
+          >My reservations
+          <span class="reservation-count" id="reservation-count">0</span></a
+        >
+        <button class="button button-ghost" id="logout-button" type="button">
+          Log out
+        </button>
+      </nav>
+    </header>
 
-    </nav>
-    <a href="#search"><h2>Search Books</h2></a>
-    <div class = "search-bar">
-        <label for="search"></label>
-        
-        <input type="text" id="search" name="search" placeholder="Search by title, author, or ISBN">
-        <button id="search-button" type="submit"><img src = "18222125.png" alt ="search" height="40px"></button>
-    </div>
-   
-    
-    
+    <section class="library-banner" aria-labelledby="page-title">
+      <img
+        class="library-banner-image"
+        src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=2000&q=85"
+        alt="Tall shelves filled with books in a library"
+        fetchpriority="high"
+      />
+      <div class="library-banner-content">
+        <section class="hero">
+          <div>
+            <p class="eyebrow">Library catalogue</p>
+            <h1 id="page-title">Find your next great read.</h1>
+            <p>
+              Search the campus collection, check availability, and reserve a
+              copy in a few clicks.
+            </p>
+          </div>
+          <div class="hero-stat" aria-label="Catalogue summary">
+            <strong id="available-title-count">0</strong>
+            <span>titles available now</span>
+          </div>
+        </section>
 
-   
+        <section
+          class="catalogue-controls"
+          aria-label="Search and filter the catalogue"
+        >
+          <form class="search-form" id="search-form" role="search">
+            <label class="sr-only" for="search">Search the catalogue</label>
+            <input
+              type="search"
+              id="search"
+              name="search"
+              placeholder="Search by title, author, subject, or ISBN"
+              autocomplete="off"
+            />
+            <button class="search-button" type="submit">Search</button>
+          </form>
+          <div class="filter-section">
+            <p class="filter-label">Department</p>
+            <div
+              class="filter-list"
+              id="department-filters"
+              role="group"
+              aria-label="Filter by department"
+            ></div>
+          </div>
+          <div class="filter-section">
+            <p class="filter-label">Availability</p>
+            <div
+              class="filter-list"
+              id="availability-filters"
+              role="group"
+              aria-label="Filter by availability"
+            ></div>
+          </div>
+        </section>
+      </div>
+    </section>
 
-    <nav class ="Filters">
-        <p class="para">Department:</p>
-        <button class="filter-button">All</button>
-        <button class="filter-button">Mathematics</button>
-        <button class="filter-button">Python</button>
-        <button class="filter-button">C++</button>
-        <button class="filter-button">Java</button>
-        <button class="filter-button">HTML</button>
-        <button class="filter-button">Full Stack</button>
-        <button class="filter-button">Electical</button>
-        <button class="filter-button">Mechanical</button>
-        
-        
-        
-    </nav>
-    
-    <nav class ="Filters">
-        <p class="para">Status:</p>
-        <button class ="filter-button">All</button>
-        <button class ="filter-button">Available on shelf</button>
-        <button class ="filter-button">Checked out</button>
-    </nav>
-    <br>
-<div class="cards">
-    
+    <main class="catalogue-main">
+      <section class="catalogue-section" aria-labelledby="results-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Collection</p>
+            <h2 id="results-title">Browse books</h2>
+          </div>
+          <p
+            id="results-summary"
+            class="results-summary"
+            aria-live="polite"
+          ></p>
+        </div>
+        <div class="cards" id="catalogue" role="list"></div>
+      </section>
+    </main>
 
-    <div class="books">
-        <div class="logo">
-            <img src="Python.jpg" alt="Python Book">
-           
+    <footer class="footer">
+      <div class="footer-brand">
+        <img src="image.png" alt="IIT Dholakpur logo" />
+        <div>
+          <strong>Campus Library</strong>
+          <p>© 2026 IIT Dholakpur. All rights reserved.</p>
         </div>
-        
-        <div class="description">
-            <h4>Python Crash Course</h4>
-            <p>~Eric Matthes</p>
-            <p>3rd edition</p>
-            <p>ISBN:978-1718502703</p>
-            <p>Subject: Python</p>
-        </div>
-        <div class="availability">
-        <ul >
-            <li>1/6 on shelf</li>
-            <li>Available on Shelf</li>
-        </ul>
-        </div>
-        <button class="reserve-btn" data-book="Advanced Eng. Mathematic">Reserve</button>
-    </div>
-    <div class="books">
-        <div class="logo">
-            <img src="Maths.jpg" alt="Book Catalog">
-           
-        </div>
-        
-        <div class="description">
-            <h5>Advanced Eng. Mathematic</h5>
-            <p>~Erwin Kreyszig</p>
-            <p>4th edition</p>
-            <p>ISBN:978-0470458365</p>
-            <p>Subject: Mathematics</p>
-        </div>
-        <div class="availability">
-        <ul >
-            <li>3/5 on shelf</li>
-            <li>Available on Shelf</li>
-        </ul>
-        </div>
-    </div>
-
-        
-    <div class="books">
-        <div class="logo">
-            <img src="Html.webp" alt="Book Catalog">
-           
-        </div>
-        
-        <div class="description">
-            <h4>Design and Build Websites</h4>
-            <p>~Jon Duckett</p>
-            <p>7th edition</p>
-            <p>ISBN:978-1118093054</p>
-            <p>Subject: HTML</p>
-        </div>
-        <div class="checkout">
-        <ul >
-            <li>Checked Out</li>
-        </ul>
-        </div>
-    </div>
-    <div class="books">
-        <div class="logo">
-            <img src="C++.jpeg" alt="Book Catalog">
-           
-        </div>
-        
-        <div class="description">
-            <h5>Principles & Practice Using C++</h5>
-            <p>~Bjarne Stroustrup</p>
-            <p>3rd edition</p>
-            <p>ISBN:978-0321714114</p>
-            <p>Subject: C++</p>
-        </div>
-        <div class="availability">
-        <ul >
-            <li>6/7 on shelf</li>
-            <li>Available on Shelf</li>
-        </ul>
-        </div>
-    </div>
-    <div class="books">
-        <div class="logo">
-            <img src="java.webp" alt="Book Catalog">
-           
-        </div>
-        
-        <div class="description">
-            <h4>Head First Java</h4>
-            <p>~Kathy Sierra, Bert Bates</p>
-            <p>5th edition</p>
-            <p>ISBN:978-1491910771</p>
-            <p>Subject: Java</p>
-        </div>
-        <div class="checkout">
-        <ul >
-            <li>Checked Out</li>
-        </ul>
-        </div>
-    </div>
-    <div class="books">
-        <div class="logo">
-            <img src="Full.jpg" alt="Book Catalog">
-           
-        </div>
-        
-        <div class="description">
-            <h4>Spring Boot and React</h4>
-            <p>~Juha Hinkula</p>
-            <p>2nd edition</p>
-            <p>ISBN:978-1839214103</p>
-            <p>Subject: Full Stack </p>
-        </div>
-        <div class="availability">
-        <ul >
-            <li>8/9 on shelf</li>
-            <li>Available on Shelf</li>
-        </ul>
-        </div>
-    </div>
-    
-    
-
-    <div class="books">
-        <div class="logo">
-            <img src="Electrical.jpg" alt="Book Catalog">
-           
-        </div>
-        
-        <div class="description">
-            <h4>Electrical Engineering</h4>
-            <p>~Erwin Kreyszig</p>
-            <p>1st edition</p>
-            <p>ISBN:978-0470458365</p>
-            <p>Subject: Electrical </p>
-        </div>
-        <div class="checkout">
-        <ul >
-            <li>Checked Out</li>
-        </ul>
-        </div>
-    </div>
-    
-
-    <div class="books">
-        <div class="logo">
-            <img src="Mechanical.jpg" alt="Book Catalog">
-           
-        </div>
-        
-        <div class="description">
-            <h5>Mechanical Eng. Design</h5>
-            <p>~Richard G.</p>
-            <p>11th edition</p>
-            <p>ISBN:978-1118093054</p>
-            <p>Subject: Mechanical</p>
-        </div>
-        <div class="availability">
-        <ul>
-            <li>4/7 on shelf</li>
-            <li>Available on Shelf</li>
-        </ul>
-        </div>
-    </div>
-</div>
-</body>
-
-<br>
-
-<footer class="footer">
-    <div class="one">
-        <img src ="image.png" alt ="Aura">
-        <p>© 2026 IIT Dholakpur. All Rights Reserved.</p>
-        <h3><i>“Without libraries what have we? We have no past and no future.”</i></h3>
-    </div>
-    <div class="two">
-        <h3>Contact Us</h3>
-        <p>Email: heshim@iitd.ac.in</p>
-        <p>Phone: 696789XXXX</p>
-    </div>
-
-    
-
-</footer>
-<script src="libsys.js"></script>
-</body>
+      </div>
+      <p class="footer-quote">
+        “Without libraries what have we? We have no past and no future.”
+      </p>
+      <div>
+        <strong>Contact</strong>
+        <p>heshim@iitd.ac.in<br />696789XXXX</p>
+      </div>
+    </footer>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="library-data.js"></script>
+    <script src="libsys.js"></script>
+  </body>
 </html>
-
-
-
-
-
