@@ -699,3 +699,172 @@ h2 {
     width: 100%;
   }
 }
+
+/* =====================================================================
+   CAMPUS-LIB-ENHANCEMENTS-V1  — shared footer, toast, a11y, polish
+   Appended block. Safe to leave at the bottom of libsys.css.
+   ===================================================================== */
+
+/* ---------- Global safety for images ---------- */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ---------- Stronger focus indicators (a11y) ---------- */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid #6b3d8b;
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* ---------- Subtle hover on interactive cards/buttons ---------- */
+.book-card,
+.filter-button,
+.reserve-btn,
+.cancel-btn {
+  transition: transform 150ms ease, box-shadow 150ms ease, background 150ms ease;
+}
+.book-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 36px rgba(107, 61, 139, 0.14);
+}
+
+/* ---------- Clear-search button (added by libsys.js block) ---------- */
+.clear-search {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: #6b6b6b;
+  padding: 4px 8px;
+  border-radius: 6px;
+  line-height: 1;
+}
+.clear-search:hover {
+  color: #221433;
+}
+
+/* ---------- Shared site footer (used by libsys.html, Reservation.html, index.html) ---------- */
+.site-footer {
+  background: #1c1129;
+  color: #d9d2e3;
+  padding: 56px clamp(20px, 5vw, 72px) 24px;
+  margin-top: 96px;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.footer-brand {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+.footer-brand img {
+  border-radius: 10px;
+  background: #fff;
+  padding: 4px;
+}
+.footer-brand strong {
+  display: block;
+  color: #fff;
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 1.1rem;
+}
+.footer-brand p {
+  margin: 4px 0 0;
+  font-size: 0.9rem;
+  color: #b9aecb;
+}
+.footer-col h3 {
+  color: #fff;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin: 0 0 16px;
+}
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.footer-col a {
+  color: #d9d2e3;
+  text-decoration: none;
+  font-size: 0.92rem;
+}
+.footer-col a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+.footer-bottom {
+  max-width: 1200px;
+  margin: 40px auto 0;
+  padding-top: 24px;
+  border-top: 1px solid #2f2340;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 0.88rem;
+  color: #b9aecb;
+}
+.footer-quote {
+  font-style: italic;
+  margin: 0;
+}
+
+/* ---------- Toast notification ---------- */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(120%);
+  background: #221433;
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 12px;
+  font-weight: 500;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  transition: transform 250ms ease;
+  z-index: 999;
+}
+.toast.show {
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ---------- Responsive footer ---------- */
+@media (max-width: 600px) {
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+/* ---------- Reduced-motion support ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* ================= end CAMPUS-LIB-ENHANCEMENTS-V1 ================= */
