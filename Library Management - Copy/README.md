@@ -18,3 +18,5 @@ Open `login-copy.html` in a browser to sign in, then browse the catalogue. This 
 - Expand the catalogue with more books, subjects, and copies.
 - Add a home page with a glimpse of the catalogue, reservations, and other library features, with links to their sections.
 - Keep the home page as a preview: selecting an interactive item or section should prompt the visitor to sign in before continuing.
+- Enhance the footer
+- you may ignore the images if u have a good idea instead like attaching a browser's image link using href and such method 
