@@ -222,3 +222,111 @@
   syncSession();
   renderCatalogue();
 })();
+
+/* =====================================================================
+   CAMPUS-LIB-ENHANCEMENTS-V1 — toast, debounce, clearable search
+   Appended block. Safe to leave at the bottom of libsys.js.
+   ===================================================================== */
+(function () {
+  'use strict';
+
+  /* ---------- Global toast helper ---------- */
+  // Usage: window.showToast('Reserved successfully');
+  window.showToast = function (message) {
+    var t = document.getElementById('toast');
+    if (!t) {
+      t = document.createElement('div');
+      t.id = 'toast';
+      t.className = 'toast';
+      t.setAttribute('role', 'status');
+      t.setAttribute('aria-live', 'polite');
+      t.setAttribute('aria-atomic', 'true');
+      document.body.appendChild(t);
+    }
+    t.textContent = message;
+    t.classList.add('show');
+    clearTimeout(window.showToast._t);
+    window.showToast._t = setTimeout(function () {
+      t.classList.remove('show');
+    }, 3000);
+  };
+
+  /* ---------- Global debounce helper ---------- */
+  // Usage: var fn = window.debounce(myFn, 300);
+  window.debounce = function (fn, delay) {
+    var timer;
+    return function () {
+      var ctx = this;
+      var args = arguments;
+      clearTimeout(timer);
+      timer = setTimeout(function () {
+        fn.apply(ctx, args);
+      }, delay || 300);
+    };
+  };
+
+  /* ---------- Wire up search box enhancements ---------- */
+  document.addEventListener('DOMContentLoaded', function () {
+    // Find the search input — tries several common selectors.
+    var search =
+      document.getElementById('search') ||
+      document.querySelector('input[type="search"]') ||
+      document.querySelector('.search-input') ||
+      document.querySelector('#search-input') ||
+      document.querySelector('input[name="search"]');
+
+    if (!search) return;
+
+    // Ensure the parent can position the clear button absolutely.
+    var parent = search.parentElement;
+    if (parent && getComputedStyle(parent).position === 'static') {
+      parent.style.position = 'relative';
+    }
+
+    // Debounce the existing renderBooks (or refresh function) if present.
+    // We try window.renderBooks first, then window.applyFilters as a fallback.
+    var refreshFn =
+      (typeof window.renderBooks === 'function' && window.renderBooks) ||
+      (typeof window.applyFilters === 'function' && window.applyFilters) ||
+      null;
+
+    if (refreshFn && !search.dataset.debounced) {
+      search.dataset.debounced = '1';
+      search.addEventListener(
+        'input',
+        window.debounce(function () {
+          if (window.state && typeof window.state === 'object') {
+            window.state.query = search.value.trim();
+          }
+          refreshFn();
+        }, 250)
+      );
+    }
+
+    // Add the clear (×) button.
+    if (parent && !parent.querySelector('.clear-search')) {
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'clear-search';
+      btn.setAttribute('aria-label', 'Clear search');
+      btn.textContent = '\u00D7';
+      btn.hidden = true;
+      parent.appendChild(btn);
+
+      search.addEventListener('input', function () {
+        btn.hidden = !search.value;
+      });
+
+      btn.addEventListener('click', function () {
+        search.value = '';
+        btn.hidden = true;
+        search.dispatchEvent(new Event('input', { bubbles: true }));
+        search.focus();
+      });
+
+      // Set initial hidden state.
+      btn.hidden = !search.value;
+    }
+  });
+})();
+/* ============== end CAMPUS-LIB-ENHANCEMENTS-V1 ============== */
