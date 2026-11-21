@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Campus Library at IIT Dholakpur — discover, reserve, and manage books from the campus collection." />
+  <title>Campus Library | Home</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="libsys.css" />
+  <link rel="stylesheet" href="home.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Campus Library home">
+      <img src="18222125.png" alt="" width="44" height="44" />
+      <span class="brand-text">
+        <strong>Campus Library</strong>
+        <small>IIT Dholakpur</small>
+      </span>
+    </a>
+
+    <nav class="site-nav" aria-label="Primary">
+      <a href="index.html" aria-current="page">Home</a>
+      <a href="libsys.html">Catalogue</a>
+      <a href="Reservation.html">My Reservations</a>
+    </nav>
+
+    <a href="login-copy.html" class="button button-primary" id="auth-link">Sign in</a>
+  </header>
+
+  <main id="main-content" class="home-main">
+    <!-- HERO -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow">Campus Library &middot; Est. 2026</p>
+        <h1 id="hero-title">Discover. Reserve. Learn.</h1>
+        <p class="hero-lead">
+          Your gateway to the campus collection — browse titles, reserve copies,
+          and track your loans, all in one place.
+        </p>
+        <div class="hero-actions">
+          <a href="login-copy.html" class="button button-primary" id="hero-cta">Sign in to explore</a>
+          <a href="libsys.html" class="button button-secondary">Browse the catalogue</a>
+        </div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="book-stack">
+          <span class="spine spine-1">Fiction</span>
+          <span class="spine spine-2">Science</span>
+          <span class="spine spine-3">History</span>
+          <span class="spine spine-4">CS</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURED BOOKS -->
+    <section class="preview-catalogue" aria-labelledby="featured-title">
+      <header class="section-header">
+        <h2 id="featured-title">Featured this week</h2>
+        <a href="libsys.html" class="link-arrow">See all titles &rarr;</a>
+      </header>
+      <div id="featured-books" class="book-grid" aria-busy="true">
+        <!-- Populated by home.js -->
+      </div>
+    </section>
+
+    <!-- RESERVATIONS PREVIEW -->
+    <section class="preview-reservations" aria-labelledby="reservations-title">
+      <header class="section-header">
+        <h2 id="reservations-title">Your reservations</h2>
+      </header>
+      <div id="reservations-preview" class="preview-card">
+        <p class="sign-in-prompt">
+          Sign in to view and manage your active reservations.
+        </p>
+        <a href="login-copy.html" class="button button-primary">Sign in</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ENHANCED FOOTER -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="18222125.png" alt="IIT Dholakpur logo" width="56" height="56" />
+        <div>
+          <strong>Campus Library</strong>
+          <p>IIT Dholakpur</p>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h3>Explore</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="libsys.html">Catalogue</a></li>
+          <li><a href="Reservation.html">My Reservations</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3>Support</h3>
+        <ul>
+          <li><a href="login-copy.html">Sign in</a></li>
+          <li><a href="mailto:heshim@iitd.ac.in">Contact librarian</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3>Contact</h3>
+        <ul>
+          <li>&#128231; <a href="mailto:heshim@iitd.ac.in">heshim@iitd.ac.in</a></li>
+          <li>&#128222; 696789XXXX</li>
+          <li>&#128205; IIT Dholakpur, Central Block</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; <span id="footer-year"></span> IIT Dholakpur. All rights reserved.</p>
+      <p class="footer-quote">
+        &ldquo;Without libraries what have we? We have no past and no future.&rdquo;
+      </p>
+    </div>
+  </footer>
+
+  <div id="toast" class="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+
+  <script src="library-data.js"></script>
+  <script src="home.js"></script>
+  <script>
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

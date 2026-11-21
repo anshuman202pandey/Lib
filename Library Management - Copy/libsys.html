@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Browse and reserve titles from the Campus Library catalogue."
+    />
+    <title>Campus Library | Catalogue</title>
+    <link rel="stylesheet" href="libsys.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="libsys.html" aria-label="Campus Library home">
+        <img src="image.png" alt="IIT Dholakpur logo" />
+        <span
+          ><strong>Campus Library</strong
+          ><small>Discover. Reserve. Learn.</small></span
+        >
+      </a>
+      <nav class="header-actions" aria-label="Account navigation">
+        <span class="student-chip" id="student-id" hidden></span>
+        <a class="button button-secondary" href="Reservation.html"
+          >My reservations
+          <span class="reservation-count" id="reservation-count">0</span></a
+        >
+        <button class="button button-ghost" id="logout-button" type="button">
+          Log out
+        </button>
+      </nav>
+    </header>
+
+    <section class="library-banner" aria-labelledby="page-title">
+      <img
+        class="library-banner-image"
+        src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=2000&q=85"
+        alt="Tall shelves filled with books in a library"
+        fetchpriority="high"
+      />
+      <div class="library-banner-content">
+        <section class="hero">
+          <div>
+            <p class="eyebrow">Library catalogue</p>
+            <h1 id="page-title">Find your next great read.</h1>
+            <p>
+              Search the campus collection, check availability, and reserve a
+              copy in a few clicks.
+            </p>
+          </div>
+          <div class="hero-stat" aria-label="Catalogue summary">
+            <strong id="available-title-count">0</strong>
+            <span>titles available now</span>
+          </div>
+        </section>
+
+        <section
+          class="catalogue-controls"
+          aria-label="Search and filter the catalogue"
+        >
+          <form class="search-form" id="search-form" role="search">
+            <label class="sr-only" for="search">Search the catalogue</label>
+            <input
+              type="search"
+              id="search"
+              name="search"
+              placeholder="Search by title, author, subject, or ISBN"
+              autocomplete="off"
+            />
+            <button class="search-button" type="submit">Search</button>
+          </form>
+          <div class="filter-section">
+            <p class="filter-label">Department</p>
+            <div
+              class="filter-list"
+              id="department-filters"
+              role="group"
+              aria-label="Filter by department"
+            ></div>
+          </div>
+          <div class="filter-section">
+            <p class="filter-label">Availability</p>
+            <div
+              class="filter-list"
+              id="availability-filters"
+              role="group"
+              aria-label="Filter by availability"
+            ></div>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <main class="catalogue-main">
+      <section class="catalogue-section" aria-labelledby="results-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Collection</p>
+            <h2 id="results-title">Browse books</h2>
+          </div>
+          <p
+            id="results-summary"
+            class="results-summary"
+            aria-live="polite"
+          ></p>
+        </div>
+        <div class="cards" id="catalogue" role="list"></div>
+      </section>
+    </main>
+
+    <footer class="site-footer" role="contentinfo">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="image.png" alt="IIT Dholakpur logo" width="56" height="56" />
+          <div>
+            <strong>Campus Library</strong>
+            <p>IIT Dholakpur</p>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h3>Explore</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="libsys.html">Catalogue</a></li>
+            <li><a href="Reservation.html">My Reservations</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Support</h3>
+          <ul>
+            <li><a href="login-copy.html">Sign in</a></li>
+            <li><a href="mailto:heshim@iitd.ac.in">Contact librarian</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Contact</h3>
+          <ul>
+            <li>&#128231; <a href="mailto:heshim@iitd.ac.in">heshim@iitd.ac.in</a></li>
+            <li>&#128222; 696789XXXX</li>
+            <li>&#128205; IIT Dholakpur, Central Block</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; <span class="footer-year"></span> IIT Dholakpur. All rights reserved.</p>
+        <p class="footer-quote">
+          &ldquo;Without libraries what have we? We have no past and no future.&rdquo;
+        </p>
+      </div>
+    </footer>
+
+    <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+    <script>
+      document.querySelectorAll(".footer-year").forEach(function (el) {
+        el.textContent = new Date().getFullYear();
+      });
+    </script>
+    <script src="library-data.js"></script>
+    <script src="libsys.js"></script>
+  </body>
+</html>

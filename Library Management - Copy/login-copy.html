@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Sign in to the Campus Library catalogue."
+    />
+    <title>Campus Library | Sign in</title>
+    <link rel="stylesheet" href="login-copy.css" />
+  </head>
+  <body>
+    <main class="login-shell">
+      <section class="welcome-panel" aria-label="Campus Library welcome">
+        <img src="image.png" alt="IIT Dholakpur logo" />
+        <p class="eyebrow">IIT Dholakpur</p>
+        <h1>Welcome to your <em>Campus Library.</em></h1>
+        <p>
+          Search the collection, see what is available, and reserve titles for
+          your next visit.
+        </p>
+      </section>
+
+      <section class="login-card" aria-labelledby="login-title">
+        <p class="eyebrow">Student access</p>
+        <h2 id="login-title">Sign in</h2>
+        <p class="login-subtitle">Use your registration number to continue.</p>
+
+        <form id="login-form" novalidate>
+          <label for="registration-number">Registration number</label>
+          <input
+            type="text"
+            inputmode="numeric"
+            id="registration-number"
+            name="registrationNumber"
+            autocomplete="username"
+            required
+            minlength="10"
+            maxlength="10"
+            pattern="[0-9]{10}"
+            placeholder="Enter your 10-digit number"
+          />
+
+          <div class="field-hint">
+            <span>Numbers only</span>
+            <span id="registration-counter" aria-live="polite">0 / 10</span>
+          </div>
+
+          <div class="password-label-row">
+            <label for="password">Password</label>
+            <button
+              class="password-toggle"
+              id="password-toggle"
+              type="button"
+              aria-pressed="false"
+            >
+              Show
+            </button>
+          </div>
+
+          <input
+            type="password"
+            id="password"
+            name="password"
+            autocomplete="current-password"
+            required
+            minlength="1"
+            placeholder="Enter your password"
+          />
+
+          <p class="form-feedback" id="login-feedback" role="alert"></p>
+          <button type="submit" id="login-submit">Enter library</button>
+        </form>
+
+        <p class="login-help">
+          This demo stores sign-in status only in this browser.
+        </p>
+      </section>
+    </main>
+
+    <script src="library-data.js"></script>
+    <script src="login.js"></script>
+  </body>
+</html>
