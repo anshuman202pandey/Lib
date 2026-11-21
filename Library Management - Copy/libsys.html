@@ -108,23 +108,57 @@
       </section>
     </main>
 
-    <footer class="footer">
-      <div class="footer-brand">
-        <img src="image.png" alt="IIT Dholakpur logo" />
-        <div>
-          <strong>Campus Library</strong>
-          <p>© 2026 IIT Dholakpur. All rights reserved.</p>
+    <footer class="site-footer" role="contentinfo">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="image.png" alt="IIT Dholakpur logo" width="56" height="56" />
+          <div>
+            <strong>Campus Library</strong>
+            <p>IIT Dholakpur</p>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h3>Explore</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="libsys.html">Catalogue</a></li>
+            <li><a href="Reservation.html">My Reservations</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Support</h3>
+          <ul>
+            <li><a href="login-copy.html">Sign in</a></li>
+            <li><a href="mailto:heshim@iitd.ac.in">Contact librarian</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Contact</h3>
+          <ul>
+            <li>&#128231; <a href="mailto:heshim@iitd.ac.in">heshim@iitd.ac.in</a></li>
+            <li>&#128222; 696789XXXX</li>
+            <li>&#128205; IIT Dholakpur, Central Block</li>
+          </ul>
         </div>
       </div>
-      <p class="footer-quote">
-        “Without libraries what have we? We have no past and no future.”
-      </p>
-      <div>
-        <strong>Contact</strong>
-        <p>heshim@iitd.ac.in<br />696789XXXX</p>
+
+      <div class="footer-bottom">
+        <p>&copy; <span class="footer-year"></span> IIT Dholakpur. All rights reserved.</p>
+        <p class="footer-quote">
+          &ldquo;Without libraries what have we? We have no past and no future.&rdquo;
+        </p>
       </div>
     </footer>
-    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+    <script>
+      document.querySelectorAll(".footer-year").forEach(function (el) {
+        el.textContent = new Date().getFullYear();
+      });
+    </script>
     <script src="library-data.js"></script>
     <script src="libsys.js"></script>
   </body>
